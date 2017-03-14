@@ -5,6 +5,7 @@ import YTSearch from 'youtube-api-search'
 // components
 import SearchBar from './components/search_bar'
 import VideoList from './components/video_list'
+import VideoDetail from './components/video_detail'
 
 
 class App extends React.Component {
@@ -30,6 +31,7 @@ class App extends React.Component {
       <div className="container">
         <h3>YuuTobe</h3>
         <SearchBar />
+        <VideoDetail video={this.state.videos[0]} />
         <VideoList videos={this.state.videos}/>
       </div>
     )
