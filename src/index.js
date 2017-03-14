@@ -19,7 +19,7 @@ class App extends React.Component {
 
   componentWillMount(props) {
     const YT_API_KEY = 'AIzaSyAkMb7LUi72EtkKxhOtkrglTCmXOh-hIQw'
-    YTSearch({ key: YT_API_KEY, search: 'skateboard'}, (videos) => {
+    YTSearch({ key: YT_API_KEY, term: 'skateboard'}, (videos) => {
      this.setState({videos})
     })
   }
