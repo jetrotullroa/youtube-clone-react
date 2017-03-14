@@ -19,7 +19,7 @@ class SearchBar extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="search-bar col-md-8">
         <input
           type="text"
           name="search"

@@ -3,10 +3,16 @@ import React from 'react'
 // component
 import VideoListItem from './video_list_item'
 
-const VideoList = ({videos}) => {
+const VideoList = ({videos, onSelectedVideo}) => {
 
   const renderList = videos.map((video) => {
-      return <VideoListItem key={video.etag} video={video}/>
+      return (
+      <VideoListItem
+        onSelectedVideo={onSelectedVideo}
+        key={video.etag}
+        video={video}
+      />
+    )
   });
 
   return(

@@ -13,7 +13,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videos: []
+      videos: [],
+      selectedVideo: null
     }
   }
 
@@ -21,18 +22,26 @@ class App extends React.Component {
   componentWillMount(props) {
     const YT_API_KEY = 'AIzaSyAkMb7LUi72EtkKxhOtkrglTCmXOh-hIQw'
     YTSearch({ key: YT_API_KEY, term: 'skateboard'}, (videos) => {
-     this.setState({videos})
+     this.setState({
+       videos: videos,
+       selectedVideo: videos[0]
+     })
     })
   }
 
   render() {
     console.log(this.state.videos)
     return (
-      <div className="container">
-        <h3>YuuTobe</h3>
-        <SearchBar />
-        <VideoDetail video={this.state.videos[0]} />
-        <VideoList videos={this.state.videos}/>
+      <div className="container content">
+        <div className="row">
+          <div className="col-md-12">
+            <SearchBar />
+          </div>
+          <div className="col-md-12">
+            <VideoDetail video={this.state.selectedVideo} />
+            <VideoList onSelectedVideo={selectedVideo => this.setState({selectedVideo})} videos={this.state.videos}/>
+          </div>
+        </div>
       </div>
     )
   }
