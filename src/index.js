@@ -14,14 +14,16 @@ class App extends React.Component {
     super(props);
     this.state = {
       videos: [],
-      selectedVideo: null
+      selectedVideo: null,
     }
+
+    this.videoSearch('skateboard')
   }
 
 
-  componentWillMount(props) {
+  videoSearch(term) {
     const YT_API_KEY = 'AIzaSyAkMb7LUi72EtkKxhOtkrglTCmXOh-hIQw'
-    YTSearch({ key: YT_API_KEY, term: 'skateboard'}, (videos) => {
+    YTSearch({ key: YT_API_KEY, term: term }, (videos) => {
      this.setState({
        videos: videos,
        selectedVideo: videos[0]
@@ -35,7 +37,7 @@ class App extends React.Component {
       <div className="container content">
         <div className="row">
           <div className="col-md-12">
-            <SearchBar />
+            <SearchBar onInputChange={term => this.videoSearch(term)} />
           </div>
           <div className="col-md-12">
             <VideoDetail video={this.state.selectedVideo} />

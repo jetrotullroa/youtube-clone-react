@@ -3,10 +3,11 @@ import React from 'react'
 
 class SearchBar extends React.Component {
 
-  constructor(props) {
-    super(props);
+  constructor({onInputChange}) {
+    super({onInputChange});
     this.state = {
-      search : ''
+      search : '',
+      onInputChange : onInputChange
     }
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -15,6 +16,7 @@ class SearchBar extends React.Component {
     this.setState({
       [e.target.name] : e.target.value
     })
+    this.state.onInputChange(e.target.value)
   }
 
   render() {
